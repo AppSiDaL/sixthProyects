@@ -1,0 +1,8 @@
+vero
+falso
+==
+>
+<
+intero
+mentre
+se
