@@ -6,13 +6,14 @@ package code;
 
 import java.io.File;
 
+
 /**
  *
  * @author appsidal
  */
 public class Principal {
     public static void main(String[] args) {
-        String ruta ="/home/appsidal/AppSiDaL/sixthProyects/LYA/compilador/src/code/lexer.flex";
+        String ruta ="/home/appsidal/Desktop/GT/sixthProyects/LYA/compilador/src/code/lexer.flex";
         generarLexer(ruta);
     }
     public static void generarLexer(String ruta){

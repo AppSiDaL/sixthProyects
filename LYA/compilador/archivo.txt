@@ -1,8 +1,1 @@
-vero
-falso
-==
->
-<
-intero
-mentre
-se
+mentre c.c. =% 6.5.5

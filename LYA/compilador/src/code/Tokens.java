@@ -9,6 +9,7 @@ package code;
  * @author appsidal
  */
 public enum Tokens {
+    Loperaciones,
     Reservadas,
     limitesBloques,
     ciclos,
@@ -28,7 +29,7 @@ public enum Tokens {
     Resta,
     Multiplicacion,
     Division,
-    Identificador,
+    Variable,
     Numero,
     ERROR
 }
