@@ -31,5 +31,16 @@ public enum Tokens {
     Division,
     Variable,
     Numero,
-    ERROR
+    ERROR,
+    parentesisA,
+    parentesisB,
+    llaveA,
+    llaveB,
+    corcheteA,
+    corcheteB,
+    mentre,
+    per,
+    ripetere,
+    interrutore,
+    se
 }

@@ -4,7 +4,12 @@
  */
 package code;
 
+import static code.Tokens.Numero;
+import static code.Tokens.corcheteB;
 import static code.Tokens.nombreVariable;
+import static code.Tokens.parentesisA;
+import static code.Tokens.per;
+import static code.Tokens.ripetere;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,6 +19,7 @@ import java.io.PrintWriter;
 import java.io.Reader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -36,7 +42,9 @@ public class frame extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -47,6 +55,8 @@ public class frame extends javax.swing.JFrame {
         txtResultados = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,46 +87,74 @@ public class frame extends javax.swing.JFrame {
 
         jLabel2.setText("AREA DE ERRORES ENCONTRADOS");
 
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
+                new Object[][] {
+
+                },
+                new String[] {
+                        "Token", "Lexema", "Patron"
+                }));
+        jScrollPane3.setViewportView(tabla);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(btnnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bttnCompilar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 832, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(335, 335, 335)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(39, 39, 39))
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(44, 44, 44)
+                                .addComponent(btnnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 113,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(bttnCompilar, javax.swing.GroupLayout.PREFERRED_SIZE, 134,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(50, 50, 50))
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 667,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jScrollPane2)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addContainerGap())
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(335, 335, 335)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 222,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel2)
+                                .addGap(39, 39, 39)));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 732, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bttnCompilar, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                    .addComponent(btnnClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(17, 17, 17))
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 19,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 19,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 732,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 133,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(9, 9, 9)
+                                                .addComponent(jScrollPane3)))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(bttnCompilar, javax.swing.GroupLayout.DEFAULT_SIZE, 41,
+                                                Short.MAX_VALUE)
+                                        .addComponent(btnnClear, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(17, 17, 17)));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -140,9 +178,12 @@ public class frame extends javax.swing.JFrame {
         }
 
         try {
+
             Reader lector = new BufferedReader(new FileReader("archivo.txt"));
             Lexer lexer = new Lexer(lector);
             String resultado = "";
+            DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+            Object[] nuevaFila;
             while (true) {
                 Tokens tokens = lexer.yylex();
                 if (tokens == null) {
@@ -153,12 +194,19 @@ public class frame extends javax.swing.JFrame {
                 switch (tokens) {
                     case Loperaciones:
                         resultado += lexer.lexeme + ": Es un " + tokens + "\n";
+                        nuevaFila = new Object[] { "Operacion", lexer.lexeme, "-|+|/|*" };
+                        modelo.addRow(nuevaFila);
+                        tabla.setModel(modelo);
                         break;
+
                     case ERROR:
                         resultado += "El simbolo no definido \n";
                         break;
                     case limitesBloques:
                         resultado += lexer.lexeme + ": Es un " + tokens + "\n";
+                        nuevaFila = new Object[] { lexer.lexeme, lexer.lexeme, lexer.lexeme };
+                        modelo.addRow(nuevaFila);
+                        tabla.setModel(modelo);
                         break;
                     case ciclos:
                         resultado += lexer.lexeme + ": Es un " + tokens + "\n";
@@ -168,24 +216,45 @@ public class frame extends javax.swing.JFrame {
                         break;
                     case Loperadores:
                         resultado += lexer.lexeme + ": Es un " + tokens + "\n";
+                        nuevaFila = new Object[] { "operadores", lexer.lexeme, "+|-|*|/" };
+                        modelo.addRow(nuevaFila);
+                        tabla.setModel(modelo);
                         break;
                     case Lentrada:
                         resultado += lexer.lexeme + ": Es un " + tokens + "\n";
+                        nuevaFila = new Object[] { "entrada", lexer.lexeme, "scansione" };
+                        modelo.addRow(nuevaFila);
+                        tabla.setModel(modelo);
                         break;
                     case Lnumeros:
                         resultado += lexer.lexeme + ": Es un " + tokens + "\n";
+                        nuevaFila = new Object[] { "Numero", lexer.lexeme, "(0-9)" };
+                        modelo.addRow(nuevaFila);
+                        tabla.setModel(modelo);
                         break;
                     case Lbooleanos:
                         resultado += lexer.lexeme + ": Es un " + tokens + "\n";
+                        nuevaFila = new Object[] { "booleanos", lexer.lexeme, "vero|falso" };
+                        modelo.addRow(nuevaFila);
+                        tabla.setModel(modelo);
                         break;
                     case Lcomparadores:
                         resultado += lexer.lexeme + ": Es un " + tokens + "\n";
+                        nuevaFila = new Object[] { "comparadores", lexer.lexeme, "==|>|<|>=|<=|!=" };
+                        modelo.addRow(nuevaFila);
+                        tabla.setModel(modelo);
                         break;
                     case LtipoDato:
                         resultado += lexer.lexeme + ": Es un " + tokens + "\n";
+                        nuevaFila = new Object[] { "tipo Dato", lexer.lexeme, "intero|boleano|doble|caratere|corda" };
+                        modelo.addRow(nuevaFila);
+                        tabla.setModel(modelo);
                         break;
                     case Lsalida:
                         resultado += lexer.lexeme + ": Es un " + tokens + "\n";
+                        nuevaFila = new Object[] { "stampa", lexer.lexeme, "stampa" };
+                        modelo.addRow(nuevaFila);
+                        tabla.setModel(modelo);
                         break;
                     case Linde:
                         resultado += lexer.lexeme + ": Es un " + tokens + "\n";
@@ -206,9 +275,82 @@ public class frame extends javax.swing.JFrame {
                         break;
                     case Variable:
                         resultado += lexer.lexeme + ": Es una " + tokens + "\n";
+                        nuevaFila = new Object[] { "Variable", lexer.lexeme, "Lv(Lv|Ln|_)" };
+                        modelo.addRow(nuevaFila);
+                        tabla.setModel(modelo);
                         break;
+
                     case Numero:
                         resultado += lexer.lexeme + ": Es una " + tokens + "\n";
+                        nuevaFila = new Object[] { "Numero", lexer.lexeme, "(0-9)" };
+                        modelo.addRow(nuevaFila);
+                        tabla.setModel(modelo);
+                        break;
+                    case parentesisA:
+                        resultado += lexer.lexeme + ": Es una " + tokens + "\n";
+                        nuevaFila = new Object[] { "(", lexer.lexeme, "(" };
+                        modelo.addRow(nuevaFila);
+                        tabla.setModel(modelo);
+                        break;
+                    case parentesisB:
+                        resultado += lexer.lexeme + ": Es una " + tokens + "\n";
+                        nuevaFila = new Object[] { ")", lexer.lexeme, ")" };
+                        modelo.addRow(nuevaFila);
+                        tabla.setModel(modelo);
+                        break;
+                    case llaveA:
+                        resultado += lexer.lexeme + ": Es una " + tokens + "\n";
+                        nuevaFila = new Object[] { "{", lexer.lexeme, "{" };
+                        modelo.addRow(nuevaFila);
+                        tabla.setModel(modelo);
+                        break;
+                    case llaveB:
+                        resultado += lexer.lexeme + ": Es una " + tokens + "\n";
+                        nuevaFila = new Object[] { "}", lexer.lexeme, "}" };
+                        modelo.addRow(nuevaFila);
+                        tabla.setModel(modelo);
+                        break;
+                    case corcheteA:
+                        resultado += lexer.lexeme + ": Es una " + tokens + "\n";
+                        nuevaFila = new Object[] { "[", lexer.lexeme, "[" };
+                        modelo.addRow(nuevaFila);
+                        tabla.setModel(modelo);
+                        break;
+                    case corcheteB:
+                        resultado += lexer.lexeme + ": Es una " + tokens + "\n";
+                        nuevaFila = new Object[] { "[", lexer.lexeme, "]" };
+                        modelo.addRow(nuevaFila);
+                        tabla.setModel(modelo);
+                        break;
+                    case mentre:
+                        resultado += lexer.lexeme + ": Es una " + tokens + "\n";
+                        nuevaFila = new Object[] { "mentre", lexer.lexeme, "mentre" };
+                        modelo.addRow(nuevaFila);
+                        tabla.setModel(modelo);
+                        break;
+                    case interrutore:
+                        resultado += lexer.lexeme + ": Es una " + tokens + "\n";
+                        nuevaFila = new Object[] { "interrutore", lexer.lexeme, "interrutore" };
+                        modelo.addRow(nuevaFila);
+                        tabla.setModel(modelo);
+                        break;
+                    case per:
+                        resultado += lexer.lexeme + ": Es una " + tokens + "\n";
+                        nuevaFila = new Object[] { "per", lexer.lexeme, "per" };
+                        modelo.addRow(nuevaFila);
+                        tabla.setModel(modelo);
+                        break;
+                    case ripetere:
+                        resultado += lexer.lexeme + ": Es una " + tokens + "\n";
+                        nuevaFila = new Object[] { "ripetere", lexer.lexeme, "ripetere" };
+                        modelo.addRow(nuevaFila);
+                        tabla.setModel(modelo);
+                        break;
+                    case se:
+                        resultado += lexer.lexeme + ": Es una " + tokens + "\n";
+                        nuevaFila = new Object[] { "se", lexer.lexeme, "se" };
+                        modelo.addRow(nuevaFila);
+                        tabla.setModel(modelo);
                         break;
                     default:
                         resultado += "Token: " + tokens + "\n";
@@ -269,6 +411,8 @@ public class frame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable tabla;
     private javax.swing.JTextArea txtArea;
     private javax.swing.JTextArea txtResultados;
     // End of variables declaration//GEN-END:variables

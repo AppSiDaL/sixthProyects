@@ -14,18 +14,34 @@ espacio=[ ,\t,\r,\n]+
 
 {espacio} {/*Ignore*/}
 "//".* {/*Ignore*/}
-"("|")"|"{"|"}"|"["|"]" {return limitesBloques;}
-"mentre"|"per"|"ripetere" {lexeme=yytext(); return ciclos;}
-"se"|"interruttore" {lexeme=yytext(); return sentenciasSelectivas;}
+"(" {lexeme=yytext(); return parentesisA;}
+")" {lexeme=yytext(); return parentesisB;}
+"{" {lexeme=yytext(); return llaveA;}
+"}" {lexeme=yytext(); return llaveB;}
+"[" {lexeme=yytext(); return corcheteA;}
+"]" {lexeme=yytext(); return corcheteB;}
+//Ciclos
+"mentre"  {lexeme=yytext(); return mentre;}
+"per"  {lexeme=yytext(); return per;}
+"ripetere"  {lexeme=yytext(); return ripetere;}
+//Sentencias selectivas
+"se"  {lexeme=yytext(); return se;}
+"interruttore"  {lexeme=yytext(); return interruttore;}
 "+"|"-"|"/"|"%"|"*"|"^" {return Loperadores;}
-"scansione" {lexeme=yytext(); return Lentrada;}
+"scansione" {return Lentrada;}
 "0"|"1"|"2"|"3"|"4"|"5"|"6"|"7"|"8"|"9" {return Lnumeros;}
-"vero"|"falso" {lexeme=yytext(); return Lbooleanos;}
-"=="|"<="|">="|"!="|"<"|">" {lexeme=yytext(); return Lcomparadores;}
-"intero"|"carattere"|"corda"|"dopplo"|"booleano" {lexeme=yytext(); return LtipoDato;}
-"stampa" {lexeme=yytext(); return Lsalida;}
+"vero"|"falso" {return Lbooleanos;}
+"=="|"<="|">="|"!="|"<"|">" {return Lcomparadores;}
+"intero"|"carattere"|"corda"|"dopplo"|"booleano" {return LtipoDato;}
+"stampa" {return Lsalida;}
 "++"|"--" {return Linde;}
 "&&"|"||" {return Land;}
+
+"=" {return Igual;}
+"+" {return Suma;}
+"-" {return Resta;}
+"*" {return Multiplicacion;}
+"/" {return Division;}
 
 {Lletras}({Lletras}|{Lnumeros}|"_")* {lexeme=yytext(); return Variable;}
 "-"?{Lnumeros}+("."{Lnumeros}+)? {lexeme=yytext(); return Numero;}
