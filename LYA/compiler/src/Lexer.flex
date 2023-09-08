@@ -79,6 +79,7 @@ color { return token(yytext(), "TIPO_DATO", yyline, yycolumn); }
 "&" |
 "|" { return token(yytext(), "OP_LOGICO", yyline, yycolumn); }
 
+
 /* Final */
 final { return token(yytext(), "FINAL", yyline, yycolumn); }
 //ER

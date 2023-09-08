@@ -53,7 +53,7 @@ public class Compilador extends javax.swing.JFrame {
     }
 
     private void init() {
-        title = "RoboMind";
+        title = "Compiler";
         setLocationRelativeTo(null);
         setTitle(title);
         directorio = new Directory(this, jtpCode, title, ".robo");
@@ -64,7 +64,6 @@ public class Compilador extends javax.swing.JFrame {
                 System.exit(0);
             }
         });
-        Functions.setLineNumberOnJTextComponent(jtpCode);
         timerKeyReleased = new Timer((int) (1000 * 0.3), (ActionEvent e) -> {
             timerKeyReleased.stop();
             colorAnalysis();
@@ -98,10 +97,12 @@ public class Compilador extends javax.swing.JFrame {
         jtaOutputConsole = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblTokens = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
+        setTitle("COMPILADOR");
 
+        jtpCode.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
         jScrollPane1.setViewportView(jtpCode);
 
         btnCompilar.setText("Compilar");
@@ -166,41 +167,54 @@ public class Compilador extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tblTokens);
 
+        jLabel1.setText("AREA DE CODIGO");
+
         javax.swing.GroupLayout rootPanelLayout = new javax.swing.GroupLayout(rootPanel);
         rootPanel.setLayout(rootPanelLayout);
         rootPanelLayout.setHorizontalGroup(
             rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rootPanelLayout.createSequentialGroup()
-                .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(rootPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, rootPanelLayout.createSequentialGroup()
-                        .addGap(518, 518, 518)
-                        .addComponent(panelButtonCompilerExecute, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 106, Short.MAX_VALUE)))
-                .addGap(23, 23, 23))
+                .addGap(19, 19, 19)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(423, 423, 423)
+                .addComponent(panelButtonCompilerExecute, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 85, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rootPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
         rootPanelLayout.setVerticalGroup(
             rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(rootPanelLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(panelButtonCompilerExecute, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelButtonCompilerExecute, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(15, 15, 15)
                 .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(rootPanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(62, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
+                .addContainerGap())
         );
 
-        getContentPane().add(rootPanel);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(rootPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(rootPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -307,7 +321,6 @@ jtaOutputConsole.setText("");
         gramatica.disableValidations();
 
         /* Eliminación de errores */
-        gramatica.delete(new String[]{"ERROR", "ERROR_1", "ERROR_2"}, 14);
 
         /* Agrupación de valores */
         gramatica.group("VALOR", "(NUMERO | COLOR)", true);
@@ -315,25 +328,25 @@ jtaOutputConsole.setText("");
         /* Declaración de variables */
         gramatica.group("VARIABLE", "TIPO_DATO IDENTIFICADOR OP_ASIG VALOR", true, identProd);
         gramatica.group("VARIABLE", "TIPO_DATO OP_ASIG VALOR", true,
-                1, " × Error sintáctico {}: falta el identificador en la declaración de variable [#, %]");
+                1, " ✘ Sintax Error {}: Variable no declarada [#, %]");
 
         gramatica.finalLineColumn();
 
         gramatica.group("VARIABLE", "TIPO_DATO IDENTIFICADOR OP_ASIG", true,
-                2, " × Error sintáctico {}: falta el valor en la declaración de variable [#, %]");
+                2, " ✘ Sintax Error {}: Variable no Inicializada [#, %]");
 
         gramatica.initialLineColumn();
 
         gramatica.group("VARIABLE", "TIPO_DATO IDENTIFICADOR VALOR", true,
-                3, " × Error sintáctico {}: falta el operador de asignación en la declaración de variable [#, %]", 2);
+                3, " ✘ Sintax Error {}: Falta Asignacion [#, %]", 2);
         gramatica.group("VARIABLE", "IDENTIFICADOR OP_ASIG VALOR", true,
-                4, " × Error sintáctico {}: falta el tipo de dato en la declaración de variable [#, %]");
+                4, " ✘ Sintax Error {}: Sin tipo de dato [#, %]");
 
         /* Eliminación de tipos de datos y operadores de asignación */
         gramatica.delete("TIPO_DATO",
-                5, " × Error sintáctico {}: el tipo de dato no está en la declaración de una variable [#, %]");
+                5, " ✘ Sintax Error {}: Falta el tipo de dato [#, %]");
         gramatica.delete("OP_ASIG",
-                6, " × Error sintáctico {}: el operador de asignación no está en la declaración de una variable [#, %]");
+                6, " ✘ Sintax Error {}: Falta asignacion [#, %]");
 
         /* Agrupación de identificadores como valor y definición de parámetros */
         gramatica.group("VALOR", "IDENTIFICADOR", true);
@@ -344,16 +357,16 @@ jtaOutputConsole.setText("");
                 + " TOMAR | LANZAR_MONEDA | VER | DETENER_REPETIR )", true);
         gramatica.group("FUNCION_COMP", "FUNCION PARENTESIS_A (VALOR | PARAMETROS)? PARENTESIS_C", true);
         gramatica.group("FUNCION_COMP", "FUNCION (VALOR | PARAMETROS)? PARENTESIS_C", true,
-                7, " × Error sintáctico {}: falta el paréntesis que abre en la función [#, %]");
+                7, " ✘ Sintax Error {}: falta el paréntesis que abre en la función [#, %]");
         gramatica.finalLineColumn();
         gramatica.group("FUNCION_COMP", "FUNCION PARENTESIS_A (VALOR | PARAMETROS)", true,
-                8, " × Error sintáctico {}: falta el paréntesis que cierra en la función [#, %]");
+                8, " ✘ Sintax Error  {}: Expected ) [#, %]");
 
         gramatica.initialLineColumn();
 
         /* Eliminación de funciones mal declaradas */
         gramatica.delete("FUNCION",
-                9, " × Error sintáctico {}: La función no está declarada correctamente [#, %]");
+                9, " ✘ Sintax Error {}: Funcion incorrecta [#, %]");
 
         /* Expresiones lógicas */
         gramatica.loopForFunExecUntilChangeNotDetected(() -> {
@@ -363,7 +376,7 @@ jtaOutputConsole.setText("");
 
         /* Eliminación de operadores lógicos */
         gramatica.delete("OP_LOGICO",
-                10, " × Error sintáctico {}: El operador lógico no está contenido en una expresión [#, %]");
+                10, " ✘ Sintax Error {}: Operador logico sin expresion [#, %]");
 
         /* Agrupación de expresiones lógicas como valores y parámetros */
         gramatica.group("VALOR", "EXP_LOGICA", true);
@@ -375,28 +388,28 @@ jtaOutputConsole.setText("");
         gramatica.group("EST_CONTROL_COMP", "EST_CONTROL PARENTESIS_A PARENTESIS_C", true);
         gramatica.group("EST_CONTROL_COMP", "EST_CONTROL PARENTESIS_A (VALOR | PARAMETROS) PARENTESIS_C", true);
         gramatica.group("EST_CONTROL_COMP", "EST_CONTROL (VALOR | PARAMETROS) PARENTESIS_C", true,
-                11, " × Error sintáctico {}: falta el paréntesis que abre en la estructura [#, %]");
+                11, " ✘ Sintax Error {}: Expected ( [#, %]");
         gramatica.group("EST_CONTROL_COMP", "EST_CONTROL PARENTESIS_C", true,
-                12, " × Error sintáctico {}: falta el paréntesis que abre en la estructura [#, %]");
+                12, " ✘ Sintax Error {}: Expected ( [#, %]");
         gramatica.finalLineColumn();
         gramatica.group("EST_CONTROL_COMP", "EST_CONTROL PARENTESIS_A (VALOR | PARAMETROS)", true,
-                13, " × Error sintáctico {}: falta el paréntesis que cierra en la estructura [#, %]");
+                13, " ✘ Sintax Error {}: Expected ) [#, %]");
         gramatica.group("EST_CONTROL_COMP", "EST_CONTROL PARENTESIS_A", true,
-                14, " × Error sintáctico {}: falta el paréntesis que cierra en la estructura [#, %]");
+                14, " ✘ Sintax Error {}: Expected ) [#, %]");
 
         gramatica.initialLineColumn();
 
         /* Eliminación de estructuras de control mal declaradas */
         gramatica.delete("EST_CONTROL",
-                15, " × Error sintáctico {}: La estructura de control no está declarada correctamente [#, %]");
+                15, " ✘ Sintax Error {}: Estructura Incorrecta [#, %]");
 
         /* Eliminación de paréntesis */
         gramatica.delete(new String[]{"PARENTESIS_A", "PARENTESIS_C"},
-                16, " × Error sintáctico {}: El paréntesis [] no está contenido en una agrupación [#, %]");
+                16, " ✘ Sintax Error {}: [] sin agrupacion  [#, %]");
 
         /* Eliminación de valores */
         gramatica.delete("VALOR",
-                17, " × Error sintáctico {}: El valor no está contenido en una función o estructura de control [#, %]");
+                17, " ✘ Sintax Error {}: Valor sin estructura de control [#, %]");
 
         gramatica.finalLineColumn();
 
@@ -404,17 +417,17 @@ jtaOutputConsole.setText("");
         // Identificadores
         gramatica.group("VARIABLE_PC", "VARIABLE PUNTO_COMA", true);
         gramatica.group("VARIABLE_PC", "VARIABLE", true,
-                18, " × Error sintáctico {}: falta el punto y coma al final de la declaración de variable [#, %]");
+                18, " ✘ Sintax Error {}: Expected ; [#, %]");
         // Funciones
         gramatica.group("FUNCION_COMP_PC", "FUNCION_COMP PUNTO_COMA", true);
         gramatica.group("FUNCION_COMP_PC", "FUNCION_COMP", true,
-                19, " × Error sintáctico {}: falta el punto y coma al final de la declaración de función [#, %]");
+                19, " ✘ Sintax Error {}: Expected ; [#, %]");
 
         gramatica.initialLineColumn();
 
         /* Eliminación de punto y coma */
         gramatica.delete("PUNTO_COMA",
-                20, " × Error sintáctico {}: el punto y coma no está al final de una sentencia [#, %]");
+                20, " ✘ Sintax Error {}: ; Unexpected [#, %]");
 
         /* Agrupación de sentencias */
         gramatica.group("SENTENCIAS", "(VARIABLE_PC | FUNCION_COMP_PC)+");
@@ -429,18 +442,18 @@ jtaOutputConsole.setText("");
             gramatica.initialLineColumn();
 
             gramatica.group("EST_CONTROL_COMP_LASLC", "EST_CONTROL_COMP (SENTENCIAS)? LLAVE_C", true,
-                    21, " × Error sintáctico {}: falta la llave que abre en la estructura de control [#, %]");
+                    21, " ✘ Sintax Error {}: { Expected [#, %]");
 
             gramatica.finalLineColumn();
 
             gramatica.group("EST_CONTROL_COMP_LASLC", "EST_CONTROL_COMP LLAVE_A SENTENCIAS",
-                    22, " × Error sintáctico {}: falta la llave que cierra en la estructura de control [#, %]");
+                    22, " ✘ Sintax Error {}: } Expected [#, %]");
             gramatica.group("SENTENCIAS", "(SENTENCIAS | EST_CONTROL_COMP_LASLC)+");
         });
 
         /* Eliminación de llaves */
         gramatica.delete(new String[]{"LLAVE_A", "LLAVE_C"},
-                23, " × Error sintáctico {}: la llave no está contenida en una agrupación [#, %]");
+                23, " ✘ Sintax Error {}: {} No esta agrupando [#, %]");
 
         /* Mostrar gramáticas */
         // gramatica.show();
@@ -490,11 +503,38 @@ jtaOutputConsole.setText("");
 
     private void fillTableTokens() {
         tokens.forEach(token -> {
-            Object[] data = new Object[]{token.getLexicalComp(), token.getLexeme(), 
-            token.getLexicalComp()};
+            final String[] patron = {""};
+            String lexical = token.getLexicalComp();
+            if (lexical.equals("OPERACIONES")) {
+                patron[0] = "+|-|/|%|*|^";
+            } else if (lexical.equals("Variable")) {
+                patron[0] = "Letra(Letra|Numero|_)*";
+            } else if (lexical.equals("Numero")) {
+                patron[0] = "-?Numero+(.Numero+)?";
+            } else if (lexical.equals("COMPARADORES")) {
+                patron[0] = "==|<=|>=|!=|<|>";
+            } else if (lexical.equals("BOOLEANOS")) {
+                patron[0] = "vero|falso";
+            } else if (lexical.equals("OP_LOGICO")) {
+                patron[0] = "& | |";
+            }else if (lexical.equals("LOGICOS")) {
+                patron[0] = "&& | ||";
+            }else if (lexical.equals("INCREMENTO_DECREMENTO")) {
+                patron[0] = "++ | --";
+            } else if (lexical.equals("NUMERO")) {
+                patron[0] = "-?Numero+(.Numero+)?";
+            } else if (lexical.equals("ERROR")) {
+                patron[0] =  "[" + token.getLine() + ", " + token.getColumn() + "]";
+            } else {
+                patron[0] = token.getLexeme();
+            }
+            Object[] data = new Object[]{token.getLexicalComp(), token.getLexeme(), patron[0]};
             Functions.addRowDataInTable(tblTokens, data);
         });
     }
+    
+    
+    
 
     private void printConsole() {
         int sizeErrors = errors.size();
@@ -505,9 +545,9 @@ jtaOutputConsole.setText("");
                 String strError = String.valueOf(error);
                 strErrors += strError + "\n";
             }
-            jtaOutputConsole.setText("Compilación terminada...\n" + strErrors + "\nLa compilación terminó con errores...");
+            jtaOutputConsole.setText("Compilado\n" + strErrors + "\nCompilado con Errores");
         } else {
-            jtaOutputConsole.setText("Compilación terminada...");
+            jtaOutputConsole.setText("Compilado");
         }
         jtaOutputConsole.setCaretPosition(0);
     }
@@ -564,6 +604,7 @@ jtaOutputConsole.setText("");
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCompilar;
     private javax.swing.JButton btnEjecutar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
